@@ -49,21 +49,5 @@ modules:
       - store: store_factory_pool_created
     output:
       type: proto:sf.substreams.index.v1.Keys
-
-  - name: db_out
-    kind: map
-    initialBlock: 12369621
-    inputs:
-      - map: map_events
-    output:
-      type: proto:sf.substreams.sink.database.v1.DatabaseChanges
-
-  - name: graph_out
-    kind: map
-    initialBlock: 12369621
-    inputs:
-      - map: map_events
-    output:
-      type: proto:sf.substreams.entity.v1.EntityChanges
-
+      
 network: mainnet
