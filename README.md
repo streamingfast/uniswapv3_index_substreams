@@ -2,7 +2,7 @@
 
 This substreams provides a pre-filtered map module that map all `uniswapV3` events. The `map_events` is filtered through the `index_pool_events` module which index all the blocks containing data related to the `uniswapV3` protocol. Any substreams users can use this pre-filtered `map_events` as input of another module and take profit from this `uniswapV3` protocol filter (processing only blocks containing only `uniswapV3` data). 
 
-# Substreams module description
+## Modules description
 
 ```yaml
 - name: index_pool_events
