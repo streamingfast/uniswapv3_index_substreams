@@ -37,7 +37,9 @@ modules:
       - store: store_factory_pool_created
     blockFilter:
       module: index_pool_events
-      query: uniswapv3  
+      query: 
+        string: uniswapv3  
+        params: false
     output:
       type: proto:contract.v1.Events
 
@@ -49,5 +51,5 @@ modules:
       - store: store_factory_pool_created
     output:
       type: proto:sf.substreams.index.v1.Keys
-      
+
 network: mainnet

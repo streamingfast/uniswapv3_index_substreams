@@ -333,6 +333,22 @@ fn map_pool_events(
         .collect());
 }
 
+#[substreams::handlers::store]
+fn store_factory_pool_created(blk: eth::Block, store: StoreSetInt64) {
+    for rcpt in blk.receipts() {
+        for log in rcpt
+            .receipt
+            .logs
+            .iter()
+            .filter(|log| log.address == FACTORY_TRACKED_CONTRACT)
+        {
+            if let Some(event) = abi::factory_contract::events::PoolCreated::match_and_decode(log) {
+                store.set(log.ordinal, Hex(event.pool).to_string(), &1);
+            }
+        }
+    }
+}
+
 #[substreams::handlers::map]
 fn index_pool_events(blk: eth::Block, dds_store: store::StoreGetInt64) -> Result<Keys, substreams::errors::Error> {
         let mut keys = Keys::default();
